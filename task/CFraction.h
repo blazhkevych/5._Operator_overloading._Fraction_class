@@ -2,69 +2,98 @@
 class CFraction
 {
 private:
-	int whole; // целое
-	int numerator; // числитель
-	int denominator; // знаменатель
+	// Данные - члены(поля) :
+	int m_whole;			// Целое.
+	int m_numerator;		// Числитель.
+	int m_denominator;		// Знаменатель.
 public:
-	int getWhole() { return whole; }
-	int getNumerator() { return numerator; }
-	int getDenominator() { return denominator; }
-	void setWhole(int whl) { whole = whl; }
-	void setNumerator(int nmrtr) { numerator = nmrtr; }
-	void setDenominator(int dnmntr) { denominator = dnmntr; }
+	// Методы-аксессоры:
+	// Инспекторы (позволяют получить значения полей).
+	int getWhole() { return m_whole; }
+	int getNumerator() { return m_numerator; }
+	int getDenominator() { return m_denominator; }
 
-	// конструктор по умолчанию
-	CFraction()
-	{
-		whole = 0;
-		numerator = 1;
-		denominator = 2;
-	};
-	// конструктор без целой части
-	CFraction(int nmrtr, int dnmntr)
-	{
-		whole = 0;
-		numerator = nmrtr;
-		denominator = dnmntr;
-	};
-	// конструктор с целой частью
-	CFraction(int whl, int nmrtr, int dnmntr)
-	{
-		whole = whl;
-		numerator = nmrtr;
-		denominator = dnmntr;
-	};
+	// Модификаторы (позволяют установить значения полей).
+	void setWhole(int whole) { m_whole = whole; }
+	void setNumerator(int numerator) { m_numerator = numerator; }
+	void setDenominator(int denominator) { m_denominator = denominator; }
+
+	// Конструкторы:
+	// Конструктор по умолчанию (задает начальное значение).
+	CFraction() :CFraction(0, 0, 0) {};
+
+	// Конструктор с одним параметром стандартного типа является конструктором преобразования из этого типа в объект класса.
+	CFraction(int whole) :CFraction(whole, 0, 0) {};
+
+	// Конструктор без целой части.
+	CFraction(int numerator, int denominator) :CFraction(0, numerator, denominator) {};
+
+	// Конструктор с целой частью.
+	CFraction(int whole, int numerator, int denominator)
+		:m_whole(whole), m_numerator(numerator), m_denominator(denominator) {};
+
+	// Перегрузка арифметических операторов с помощью методов класса:
+	// Перегрузка оператора "+" для "object + object".
+	CFraction operator + (const CFraction& fraction) const;
+
+	// Перегрузка оператора "-" для "object - object".
+	CFraction operator - (const CFraction& fraction) const;
+
+	// Перегрузка оператора "*" для "object * object".
+	CFraction operator * (const CFraction& fraction) const;
+
+	// Перегрузка оператора "/" для "object / object".
+	CFraction operator / (const CFraction& fraction) const;
+
+	// Перегрузка операторов отношения с помощью методов класса:
+	// Перегрузка оператора "==" для "object == object".
+	bool operator == (const CFraction& fraction) const; 
+
+	// Перегрузка оператора "!=" для "object != object".
+	bool operator != (const CFraction& fraction) const;
+
+	// Перегрузка оператора ">" для "object > object".
+	bool operator > (const CFraction& fraction) const;
+
+	// Перегрузка оператора ">=" для "object >= object".
+	bool operator >= (const CFraction& fraction) const;
+
+	// Перегрузка оператора "<" для "object < object".
+	bool operator < (const CFraction& fraction) const;
+
+	// Перегрузка оператора "<=" для "object <= object".
+	bool operator <= (const CFraction& fraction) const;
 };
 
-// Функция вычисляет наибольший общий делитель целых чисел (сокращенно НОД)
+// Функция вычисляет наибольший общий делитель целых чисел (сокращенно НОД).
 int GCD(int a, int b);
 
-// Функция вычисляет наименьшее общее кратное (сокращенно НОК)
+// Функция вычисляет наименьшее общее кратное (сокращенно НОК).
 int LCM(int a, int b);
 
-// Функция сокращения дробей
-CFraction FractReduction(CFraction f);
+// Функция сокращения дробей.
+CFraction FractReduction(CFraction fraction);
 
 // Функция превращения неправильной дроби в смешанное число.
-CFraction ConvIncorFractToMixNum(CFraction f);
+CFraction ConvIncorFractToMixNum(CFraction fraction);
 
 // Функция превращения смешанного числа в неправильную дробь.
-CFraction ConvMixedNumToIncorrFract(CFraction f);
+CFraction ConvMixedNumToIncorrFract(CFraction fraction);
 
-// Функция реализующая операцию сложения
-CFraction AdditionOfFractions(CFraction f1, CFraction f2);
+// Функция реализующая операцию сложения.
+CFraction AdditionOfFractions(CFraction fraction1, CFraction fraction2);
 
-// Функция для ввода дроби
-void Input(CFraction& f);
+// Функция для ввода дроби.
+void Input(CFraction& fraction);
 
-// Функция для вывода дроби
-void Print(CFraction f);
+// Функция для вывода дроби.
+void Print(CFraction fraction);
 
-// Функция выполняет вычитание дробей
-CFraction FractionSubtraction(CFraction f1, CFraction f2);
+// Функция выполняет вычитание дробей.
+CFraction FractionSubtraction(CFraction fraction1, CFraction fraction2);
 
-// Функция реализующая операцию умножения
-CFraction Multiplication(CFraction f1, CFraction f2);
+// Функция реализующая операцию умножения.
+CFraction Multiplication(CFraction fraction1, CFraction fraction2);
 
-// Функция реализующая операцию деления
-CFraction Division(CFraction f1, CFraction f2);
+// Функция реализующая операцию деления.
+CFraction Division(CFraction fraction1, CFraction fraction2);
