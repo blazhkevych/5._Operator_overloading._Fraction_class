@@ -30,7 +30,10 @@ public:
 
 	// Конструктор с целой частью.
 	CFraction(int whole, int numerator, int denominator)
-		:m_whole(whole), m_numerator(numerator), m_denominator(denominator) {};	
+		:m_whole(whole), m_numerator(numerator), m_denominator(denominator) {};
+
+	// Метод перевода дроби в вещественное число.
+	double ConvertingFractionToRealNumber();
 };
 
 // Функция вычисляет наибольший общий делитель целых чисел (сокращенно НОД).

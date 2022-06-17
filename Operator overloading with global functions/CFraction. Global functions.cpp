@@ -369,3 +369,14 @@ bool operator <= (const CFraction& fraction1, const CFraction& fraction2)
 {
 	return !(operator>(fraction1, fraction2));
 }
+
+// Метод перевода дроби в вещественное число.
+double CFraction::ConvertingFractionToRealNumber()
+{
+	CFraction fractionCopy = *this;
+	if (fractionCopy.m_whole > 0)
+		fractionCopy = ConvMixedNumToIncorrFract(fractionCopy);
+
+	double realNumber = double(fractionCopy.m_numerator) / fractionCopy.m_denominator;
+	return realNumber;
+}

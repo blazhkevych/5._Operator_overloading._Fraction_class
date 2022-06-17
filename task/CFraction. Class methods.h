@@ -63,6 +63,9 @@ public:
 
 	// Перегрузка оператора "<=" для "this <= object".
 	bool operator <= (const CFraction& fraction) const;
+
+	// Метод перевода дроби в вещественное число.
+	double ConvertingFractionToRealNumber();
 };
 
 // Функция вычисляет наибольший общий делитель целых чисел (сокращенно НОД).

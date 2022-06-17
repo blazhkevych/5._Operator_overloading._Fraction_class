@@ -126,7 +126,6 @@ void Input(CFraction& fraction)
 // Функция для вывода дроби.
 void Print(CFraction fraction)
 {
-	//cout << "\nResult:\n";
 	if (fraction.getWhole())
 		cout << fraction.getWhole() << ' ';
 	if (fraction.getNumerator() && fraction.getDenominator())
@@ -217,32 +216,32 @@ CFraction Division(CFraction fraction1, CFraction fraction2)
 
 // Перегрузка арифметических операторов с помощью методов класса:
 // Перегрузка оператора "+" для "this + object".
-CFraction CFraction::operator+(const CFraction& fraction) const // Проверено. Работает как положено.
+CFraction CFraction::operator+(const CFraction& fraction) const
 {
 	return AdditionOfFractions(*this, fraction);
 }
 
 // Перегрузка оператора "-" для "this - object".
-CFraction CFraction::operator-(const CFraction& fraction) const // Проверено. Работает как положено.
+CFraction CFraction::operator-(const CFraction& fraction) const
 {
 	return FractionSubtraction(*this, fraction);
 }
 
 // Перегрузка оператора "*" для "this * object".
-CFraction CFraction::operator*(const CFraction& fraction) const // Проверено. Работает как положено.
+CFraction CFraction::operator*(const CFraction& fraction) const
 {
 	return Multiplication(*this, fraction);
 }
 
 // Перегрузка оператора "/" для "this / object".
-CFraction CFraction::operator/(const CFraction& fraction) const // Проверено. Работает как положено.
+CFraction CFraction::operator/(const CFraction& fraction) const
 {
 	return Division(*this, fraction);
 }
 
 // Перегрузка операторов отношения с помощью методов класса:
 // Перегрузка оператора "==" для "this == object".
-bool CFraction::operator==(const CFraction& fraction) const // Проверено. Работает как положено.
+bool CFraction::operator==(const CFraction& fraction) const
 {
 	CFraction f1Copy = *this;
 	CFraction f2Copy = fraction;
@@ -259,13 +258,13 @@ bool CFraction::operator==(const CFraction& fraction) const // Проверен�
 }
 
 // Перегрузка оператора "!=" для "this != object".
-bool CFraction::operator!=(const CFraction& fraction) const // Проверено. Работает как положено. 
+bool CFraction::operator!=(const CFraction& fraction) const
 {
 	return !(this->operator==(fraction));
 }
 
 // Перегрузка оператора ">" для "this > object".
-bool CFraction::operator>(const CFraction& fraction) const // Проверено. Работает как положено.
+bool CFraction::operator>(const CFraction& fraction) const
 {
 	CFraction fraction1Copy = *this;
 	CFraction fraction2Copy = fraction;
@@ -312,13 +311,13 @@ bool CFraction::operator>(const CFraction& fraction) const // Проверено
 }
 
 // Перегрузка оператора ">=" для "this >= object".
-bool CFraction::operator>=(const CFraction& fraction) const // Проверено. Работает как положено.
+bool CFraction::operator>=(const CFraction& fraction) const
 {
 	return !(this->operator<(fraction));
 }
 
 // Перегрузка оператора "<" для "this < object".
-bool CFraction::operator<(const CFraction& fraction) const // Проверено. Работает как положено.
+bool CFraction::operator<(const CFraction& fraction) const
 {
 	CFraction fraction1Copy = *this;
 	CFraction fraction2Copy = fraction;
@@ -365,7 +364,18 @@ bool CFraction::operator<(const CFraction& fraction) const // Проверено
 }
 
 // Перегрузка оператора "<=" для "this <= object".
-bool CFraction::operator<=(const CFraction& fraction) const // Проверено. Работает как положено.
+bool CFraction::operator<=(const CFraction& fraction) const
 {
 	return !(this->operator>(fraction));
+}
+
+// Метод перевода дроби в вещественное число.
+double CFraction::ConvertingFractionToRealNumber()
+{
+	CFraction fractionCopy = *this;
+	if (fractionCopy.m_whole > 0)
+		fractionCopy = ConvMixedNumToIncorrFract(fractionCopy);
+
+	double realNumber = double(fractionCopy.m_numerator) / fractionCopy.m_denominator;
+	return realNumber;
 }
