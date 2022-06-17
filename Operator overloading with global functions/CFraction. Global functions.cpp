@@ -219,60 +219,153 @@ CFraction Division(CFraction fraction1, CFraction fraction2)
 // Перегрузка оператора "+" для "object + object".
 CFraction operator + (const CFraction& fraction1, const CFraction& fraction2)
 {
-
+	return AdditionOfFractions(fraction1, fraction2);
 }
 
 // Перегрузка оператора "-" для "object - object".
 CFraction operator - (const CFraction& fraction1, const CFraction& fraction2)
 {
-
+	return FractionSubtraction(fraction1, fraction2);
 }
 
 // Перегрузка оператора "*" для "object * object".
 CFraction operator * (const CFraction& fraction1, const CFraction& fraction2)
 {
-
+	return Multiplication(fraction1, fraction2);
 }
 
 // Перегрузка оператора "/" для "object / object".
 CFraction operator / (const CFraction& fraction1, const CFraction& fraction2)
 {
-
+	return Division(fraction1, fraction2);
 }
 
 // Перегрузка операторов отношения с помощью глобальных функций:
 // Перегрузка оператора "==" для "object == object".
 bool operator == (const CFraction& fraction1, const CFraction& fraction2)
 {
+	CFraction f1Copy = fraction1;
+	CFraction f2Copy = fraction2;
+	if (f1Copy.getWhole() > 0)
+		f1Copy = ConvMixedNumToIncorrFract(f1Copy);
+	if (f2Copy.getWhole() > 0)
+		f2Copy = ConvMixedNumToIncorrFract(f2Copy);
 
+	if (f1Copy.getNumerator() == f2Copy.getNumerator() &&
+		f1Copy.getDenominator() == f2Copy.getDenominator())
+		return true;
+	else
+		return false;
 }
 
 // Перегрузка оператора "!=" для "object != object".
 bool operator != (const CFraction& fraction1, const CFraction& fraction2)
 {
-
+	return !(operator==(fraction1, fraction2));
 }
 
 // Перегрузка оператора ">" для "object > object".
 bool operator > (const CFraction& fraction1, const CFraction& fraction2)
 {
+	CFraction fraction1Copy = fraction1;
+	CFraction fraction2Copy = fraction2;
+	if (fraction1Copy.getWhole() > 0)
+		fraction1Copy = ConvMixedNumToIncorrFract(fraction1Copy);
+	if (fraction2Copy.getWhole() > 0)
+		fraction2Copy = ConvMixedNumToIncorrFract(fraction2Copy);
 
+	// Сравнение дробей с одинаковыми знаменателями.
+	if (fraction1Copy.getDenominator() == fraction2Copy.getDenominator())
+	{
+		if (fraction1Copy.getNumerator() > fraction2Copy.getNumerator())
+			return true;
+		else
+			return false;
+	}
+	// Сравнение дробей с одинаковыми числителями.
+	else if (fraction1Copy.getNumerator() == fraction2Copy.getNumerator())
+	{
+		if (fraction1Copy.getDenominator() < fraction2Copy.getDenominator())
+			return true;
+		else
+			return false;
+	}
+	// Сравнение дробей с разными числителями и разными знаменателями.
+	else if (fraction1Copy.getNumerator() != fraction2Copy.getNumerator() &&
+		fraction1Copy.getDenominator() != fraction2Copy.getDenominator())
+	{
+		// Приведение дроби к одинаковому (общему) знаменателю.
+		int nok = LCM(fraction1Copy.getDenominator(), fraction2Copy.getDenominator()); // НОК.
+		int additionalMultiplierFraction1 = (nok / fraction1Copy.getDenominator()); // Дополнительный множитель.
+		int additionalMultiplierFraction2 = (nok / fraction2Copy.getDenominator()); // Дополнительный множитель.
+		fraction1Copy.setNumerator(fraction1Copy.getNumerator() * additionalMultiplierFraction1);
+		fraction1Copy.setDenominator(fraction1Copy.getDenominator() * additionalMultiplierFraction1);
+		fraction2Copy.setNumerator(fraction2Copy.getNumerator() * additionalMultiplierFraction2);
+		fraction2Copy.setDenominator(fraction2Copy.getDenominator() * additionalMultiplierFraction2);
+
+		// Сравнение дробей с одинаковыми знаменателями.
+		if (fraction1Copy.getNumerator() > fraction2Copy.getNumerator())
+			return true;
+		else
+			return false;
+	}
 }
 
 // Перегрузка оператора ">=" для "object >= object".
 bool operator >= (const CFraction& fraction1, const CFraction& fraction2)
 {
-
+	return !(operator<(fraction1, fraction2));
 }
 
 // Перегрузка оператора "<" для "object < object".
 bool operator < (const CFraction& fraction1, const CFraction& fraction2)
 {
+	CFraction fraction1Copy = fraction1;
+	CFraction fraction2Copy = fraction2;
+	if (fraction1Copy.getWhole() > 0)
+		fraction1Copy = ConvMixedNumToIncorrFract(fraction1Copy);
+	if (fraction2Copy.getWhole() > 0)
+		fraction2Copy = ConvMixedNumToIncorrFract(fraction2Copy);
 
+	// Сравнение дробей с одинаковыми знаменателями.
+	if (fraction1Copy.getDenominator() == fraction2Copy.getDenominator())
+	{
+		if (fraction1Copy.getNumerator() < fraction2Copy.getNumerator())
+			return true;
+		else
+			return false;
+	}
+	// Сравнение дробей с одинаковыми числителями.
+	else if (fraction1Copy.getNumerator() == fraction2Copy.getNumerator())
+	{
+		if (fraction1Copy.getDenominator() > fraction2Copy.getDenominator())
+			return true;
+		else
+			return false;
+	}
+	// Сравнение дробей с разными числителями и разными знаменателями.
+	else if (fraction1Copy.getNumerator() != fraction2Copy.getNumerator() &&
+		fraction1Copy.getDenominator() != fraction2Copy.getDenominator())
+	{
+		// Приведение дроби к одинаковому (общему) знаменателю.
+		int nok = LCM(fraction1Copy.getDenominator(), fraction2Copy.getDenominator()); // НОК.
+		int additionalMultiplierFraction1 = (nok / fraction1Copy.getDenominator()); // Дополнительный множитель.
+		int additionalMultiplierFraction2 = (nok / fraction2Copy.getDenominator()); // Дополнительный множитель.
+		fraction1Copy.setNumerator(fraction1Copy.getNumerator() * additionalMultiplierFraction1);
+		fraction1Copy.setDenominator(fraction1Copy.getDenominator() * additionalMultiplierFraction1);
+		fraction2Copy.setNumerator(fraction2Copy.getNumerator() * additionalMultiplierFraction2);
+		fraction2Copy.setDenominator(fraction2Copy.getDenominator() * additionalMultiplierFraction2);
+
+		// Сравнение дробей с одинаковыми знаменателями.
+		if (fraction1Copy.getNumerator() < fraction2Copy.getNumerator())
+			return true;
+		else
+			return false;
+	}
 }
 
 // Перегрузка оператора "<=" для "object <= object".
 bool operator <= (const CFraction& fraction1, const CFraction& fraction2)
 {
-
+	return !(operator>(fraction1, fraction2));
 }

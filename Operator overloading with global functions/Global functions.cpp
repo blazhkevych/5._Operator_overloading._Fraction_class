@@ -20,7 +20,7 @@
 * Доперегрузить operator >= и operator <= (ПРОТЕСТИРОВАТЬ ситуацию когда значение меньше
 и когда значения равны (с равными значениями проблема, посмотреть почему операторы >= и operator <=
 при равных значениях дроби дают разный результат в булевскую res))
-*
+* Добавить вывод дроби в double !
 		ИЗВЕСТНЫЕ ОШИБКИ:
 *
 		ПРОТЕСТИРОВАТЬ:
@@ -50,8 +50,8 @@ int main()
 
 	// Перегрузка арифметических операторов с помощью методов класса:
 	// Перегрузка оператора "+" для "object + object"
-	CFraction fraction4 = fraction1 + fraction2; // 1,1,2 + 1,1,8 = 2,5,8
-	cout << "CFraction fraction4 = fraction1 + fraction2;" << endl;
+	CFraction fraction4 = operator+(fraction1, fraction2); // 1,1,2 + 1,1,8 = 2,5,8
+	cout << "CFraction fraction4 = operator+(fraction1, fraction2);" << endl;
 	cout << "fraction4 = "; Print(fraction4);
 	cout << endl;
 
