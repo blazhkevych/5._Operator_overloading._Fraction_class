@@ -126,7 +126,7 @@ void Input(CFraction& fraction)
 // Функция для вывода дроби.
 void Print(CFraction fraction)
 {
-	cout << "\nResult:\n";
+	//cout << "\nResult:\n";
 	if (fraction.getWhole())
 		cout << fraction.getWhole() << ' ';
 	if (fraction.getNumerator() && fraction.getDenominator())
@@ -217,70 +217,61 @@ CFraction Division(CFraction fraction1, CFraction fraction2)
 
 // Перегрузка арифметических операторов с помощью методов класса:
 // Перегрузка оператора "+" для "object + object".
-CFraction CFraction::operator+(const CFraction& fraction) const
+CFraction CFraction::operator+(const CFraction& fraction) const // Проверено. Работает как положено.
 {
-	/*CFraction fraction1(m_whole, m_numerator, m_denominator);
-	return AdditionOfFractions(fraction1, fraction);*/
-	//CFraction fraction1(m_whole, m_numerator, m_denominator);
-	return AdditionOfFractions(*this, fraction); // проверить работает ли корректно подобный подход
+	return AdditionOfFractions(*this, fraction);
 }
 
 // Перегрузка оператора "-" для "object - object".
-CFraction CFraction::operator-(const CFraction& fraction) const
+CFraction CFraction::operator-(const CFraction& fraction) const // Проверено. Работает как положено.
 {
-	/*CFraction fraction1(m_whole, m_numerator, m_denominator);
-	return FractionSubtraction(fraction1, fraction);*/
 	return FractionSubtraction(*this, fraction);
 }
 
 // Перегрузка оператора "*" для "object * object".
-CFraction CFraction::operator*(const CFraction& fraction) const
+CFraction CFraction::operator*(const CFraction& fraction) const // Проверено. Работает как положено.
 {
-	/*CFraction fraction1(m_whole, m_numerator, m_denominator);
-	return Multiplication(fraction1, fraction);*/
 	return Multiplication(*this, fraction);
 }
 
 // Перегрузка оператора "/" для "object / object".
-CFraction CFraction::operator/(const CFraction& fraction) const
+CFraction CFraction::operator/(const CFraction& fraction) const // Проверено. Работает как положено.
 {
-	/*CFraction fraction1(m_whole, m_numerator, m_denominator);
-	return Division(fraction1, fraction);*/
 	return Division(*this, fraction);
 }
 
 // Перегрузка операторов отношения с помощью методов класса:
 // Перегрузка оператора "==" для "object == object".
-bool CFraction::operator==(const CFraction& fraction) const
+bool CFraction::operator==(const CFraction& fraction) const // Проверено. Работает как положено.
 {
-	CFraction fraction1Copy(m_whole, m_numerator, m_denominator);
-	CFraction fraction2Copy = fraction;
-	if (fraction1Copy.m_whole > 0)
-		fraction1Copy = ConvMixedNumToIncorrFract(fraction1Copy);
-	if (fraction2Copy.m_whole > 0)
-		fraction2Copy = ConvMixedNumToIncorrFract(fraction2Copy);
+	CFraction f1Copy = *this;
+	CFraction f2Copy = fraction;
+	if (f1Copy.getWhole() > 0)
+		f1Copy = ConvMixedNumToIncorrFract(f1Copy);
+	if (f2Copy.getWhole() > 0)
+		f2Copy = ConvMixedNumToIncorrFract(f2Copy);
 
-	if (fraction1Copy.m_numerator == fraction2Copy.m_numerator &&
-		fraction1Copy.m_denominator == fraction2Copy.m_denominator)
+	if (f1Copy.m_numerator == f2Copy.m_numerator &&
+		f1Copy.m_denominator == f2Copy.m_denominator)
 		return true;
 	else
 		return false;
 }
 
 // Перегрузка оператора "!=" для "object != object".
-bool CFraction::operator!=(const CFraction& fraction) const
+bool CFraction::operator!=(const CFraction& fraction) const // Проверено. Работает как положено. 
 {
 	return !(this->operator==(fraction));
 }
 
 // Перегрузка оператора ">" для "object > object".
-bool CFraction::operator>(const CFraction& fraction) const
+bool CFraction::operator>(const CFraction& fraction) const // Проверено. Работает как положено.
 {
-	CFraction fraction1Copy(m_whole, m_numerator, m_denominator);
+	CFraction fraction1Copy = *this;
 	CFraction fraction2Copy = fraction;
-	if (fraction1Copy.m_whole > 0)
+	if (fraction1Copy.getWhole() > 0)
 		fraction1Copy = ConvMixedNumToIncorrFract(fraction1Copy);
-	if (fraction2Copy.m_whole > 0)
+	if (fraction2Copy.getWhole() > 0)
 		fraction2Copy = ConvMixedNumToIncorrFract(fraction2Copy);
 
 	// Сравнение дробей с одинаковыми знаменателями.
@@ -321,19 +312,60 @@ bool CFraction::operator>(const CFraction& fraction) const
 }
 
 // Перегрузка оператора ">=" для "object >= object".
-bool CFraction::operator>=(const CFraction& fraction) const
+bool CFraction::operator>=(const CFraction& fraction) const // Проверено. Работает как положено.
 {
 	return !(this->operator<(fraction));
 }
 
 // Перегрузка оператора "<" для "object < object".
-bool CFraction::operator<(const CFraction& fraction) const
+bool CFraction::operator<(const CFraction& fraction) const // Проверено. Работает как положено.
 {
-	return !(this->operator>(fraction));
+	CFraction fraction1Copy = *this;
+	CFraction fraction2Copy = fraction;
+	if (fraction1Copy.m_whole > 0)
+		fraction1Copy = ConvMixedNumToIncorrFract(fraction1Copy);
+	if (fraction2Copy.m_whole > 0)
+		fraction2Copy = ConvMixedNumToIncorrFract(fraction2Copy);
+
+	// Сравнение дробей с одинаковыми знаменателями.
+	if (fraction1Copy.m_denominator == fraction2Copy.m_denominator)
+	{
+		if (fraction1Copy.m_numerator < fraction2Copy.m_numerator)
+			return true;
+		else
+			return false;
+	}
+	// Сравнение дробей с одинаковыми числителями.
+	else if (fraction1Copy.m_numerator == fraction2Copy.m_numerator)
+	{
+		if (fraction1Copy.m_denominator > fraction2Copy.m_denominator)
+			return true;
+		else
+			return false;
+	}
+	// Сравнение дробей с разными числителями и разными знаменателями.
+	else if (fraction1Copy.m_numerator != fraction2Copy.m_numerator &&
+		fraction1Copy.m_denominator != fraction2Copy.m_denominator)
+	{
+		// Приведение дроби к одинаковому (общему) знаменателю.
+		int nok = LCM(fraction1Copy.m_denominator, fraction2Copy.m_denominator); // НОК.
+		int additionalMultiplierFraction1 = (nok / fraction1Copy.m_denominator); // Дополнительный множитель.
+		int additionalMultiplierFraction2 = (nok / fraction2Copy.m_denominator); // Дополнительный множитель.
+		fraction1Copy.m_numerator = fraction1Copy.m_numerator * additionalMultiplierFraction1;
+		fraction1Copy.m_denominator = fraction1Copy.m_denominator * additionalMultiplierFraction1;
+		fraction2Copy.m_numerator = fraction2Copy.m_numerator * additionalMultiplierFraction2;
+		fraction2Copy.m_denominator = fraction2Copy.m_denominator * additionalMultiplierFraction2;
+
+		// Сравнение дробей с одинаковыми знаменателями.
+		if (fraction1Copy.m_numerator < fraction2Copy.m_numerator)
+			return true;
+		else
+			return false;
+	}
 }
 
 // Перегрузка оператора "<=" для "object <= object".
-bool CFraction::operator<=(const CFraction& fraction) const
+bool CFraction::operator<=(const CFraction& fraction) const // Проверено. Работает как положено.
 {
 	return !(this->operator>(fraction));
 }
