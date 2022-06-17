@@ -33,35 +33,35 @@ public:
 		:m_whole(whole), m_numerator(numerator), m_denominator(denominator) {};
 
 	// Перегрузка арифметических операторов с помощью методов класса:
-	// Перегрузка оператора "+" для "object + object".
+	// Перегрузка оператора "+" для "this + object".
 	CFraction operator + (const CFraction& fraction) const;
 
-	// Перегрузка оператора "-" для "object - object".
+	// Перегрузка оператора "-" для "this - object".
 	CFraction operator - (const CFraction& fraction) const;
 
-	// Перегрузка оператора "*" для "object * object".
+	// Перегрузка оператора "*" для "this * object".
 	CFraction operator * (const CFraction& fraction) const;
 
-	// Перегрузка оператора "/" для "object / object".
+	// Перегрузка оператора "/" для "this / object".
 	CFraction operator / (const CFraction& fraction) const;
 
 	// Перегрузка операторов отношения с помощью методов класса:
-	// Перегрузка оператора "==" для "object == object".
-	bool operator == (const CFraction& fraction) const; 
+	// Перегрузка оператора "==" для "this == object".
+	bool operator == (const CFraction& fraction) const;
 
-	// Перегрузка оператора "!=" для "object != object".
+	// Перегрузка оператора "!=" для "this != object".
 	bool operator != (const CFraction& fraction) const;
 
-	// Перегрузка оператора ">" для "object > object".
+	// Перегрузка оператора ">" для "this > object".
 	bool operator > (const CFraction& fraction) const;
 
-	// Перегрузка оператора ">=" для "object >= object".
+	// Перегрузка оператора ">=" для "this >= object".
 	bool operator >= (const CFraction& fraction) const;
 
-	// Перегрузка оператора "<" для "object < object".
+	// Перегрузка оператора "<" для "this < object".
 	bool operator < (const CFraction& fraction) const;
 
-	// Перегрузка оператора "<=" для "object <= object".
+	// Перегрузка оператора "<=" для "this <= object".
 	bool operator <= (const CFraction& fraction) const;
 };
 

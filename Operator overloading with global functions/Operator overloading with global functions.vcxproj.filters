@@ -15,15 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Class methods.cpp">
+    <ClCompile Include="Global functions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CFraction. Class methods.cpp">
+    <ClCompile Include="CFraction. Global functions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CFraction. Class methods.h">
+    <ClInclude Include="CFraction. Global functions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

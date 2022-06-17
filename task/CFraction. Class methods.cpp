@@ -1,4 +1,4 @@
-﻿#include "CFraction.h"
+﻿#include "CFraction. Class methods.h"
 #include <iostream>
 using std::cout;
 using std::cin;
@@ -216,32 +216,32 @@ CFraction Division(CFraction fraction1, CFraction fraction2)
 }
 
 // Перегрузка арифметических операторов с помощью методов класса:
-// Перегрузка оператора "+" для "object + object".
+// Перегрузка оператора "+" для "this + object".
 CFraction CFraction::operator+(const CFraction& fraction) const // Проверено. Работает как положено.
 {
 	return AdditionOfFractions(*this, fraction);
 }
 
-// Перегрузка оператора "-" для "object - object".
+// Перегрузка оператора "-" для "this - object".
 CFraction CFraction::operator-(const CFraction& fraction) const // Проверено. Работает как положено.
 {
 	return FractionSubtraction(*this, fraction);
 }
 
-// Перегрузка оператора "*" для "object * object".
+// Перегрузка оператора "*" для "this * object".
 CFraction CFraction::operator*(const CFraction& fraction) const // Проверено. Работает как положено.
 {
 	return Multiplication(*this, fraction);
 }
 
-// Перегрузка оператора "/" для "object / object".
+// Перегрузка оператора "/" для "this / object".
 CFraction CFraction::operator/(const CFraction& fraction) const // Проверено. Работает как положено.
 {
 	return Division(*this, fraction);
 }
 
 // Перегрузка операторов отношения с помощью методов класса:
-// Перегрузка оператора "==" для "object == object".
+// Перегрузка оператора "==" для "this == object".
 bool CFraction::operator==(const CFraction& fraction) const // Проверено. Работает как положено.
 {
 	CFraction f1Copy = *this;
@@ -258,13 +258,13 @@ bool CFraction::operator==(const CFraction& fraction) const // Проверен�
 		return false;
 }
 
-// Перегрузка оператора "!=" для "object != object".
+// Перегрузка оператора "!=" для "this != object".
 bool CFraction::operator!=(const CFraction& fraction) const // Проверено. Работает как положено. 
 {
 	return !(this->operator==(fraction));
 }
 
-// Перегрузка оператора ">" для "object > object".
+// Перегрузка оператора ">" для "this > object".
 bool CFraction::operator>(const CFraction& fraction) const // Проверено. Работает как положено.
 {
 	CFraction fraction1Copy = *this;
@@ -311,13 +311,13 @@ bool CFraction::operator>(const CFraction& fraction) const // Проверено
 	}
 }
 
-// Перегрузка оператора ">=" для "object >= object".
+// Перегрузка оператора ">=" для "this >= object".
 bool CFraction::operator>=(const CFraction& fraction) const // Проверено. Работает как положено.
 {
 	return !(this->operator<(fraction));
 }
 
-// Перегрузка оператора "<" для "object < object".
+// Перегрузка оператора "<" для "this < object".
 bool CFraction::operator<(const CFraction& fraction) const // Проверено. Работает как положено.
 {
 	CFraction fraction1Copy = *this;
@@ -364,7 +364,7 @@ bool CFraction::operator<(const CFraction& fraction) const // Проверено
 	}
 }
 
-// Перегрузка оператора "<=" для "object <= object".
+// Перегрузка оператора "<=" для "this <= object".
 bool CFraction::operator<=(const CFraction& fraction) const // Проверено. Работает как положено.
 {
 	return !(this->operator>(fraction));

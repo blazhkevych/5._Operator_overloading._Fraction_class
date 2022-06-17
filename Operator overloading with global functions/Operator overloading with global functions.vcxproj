@@ -21,10 +21,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{004d48da-f79a-4968-8904-f643b2673ba1}</ProjectGuid>
-    <RootNamespace>task</RootNamespace>
+    <ProjectGuid>{1795faee-04f4-434c-8e07-0a7d206bb583}</ProjectGuid>
+    <RootNamespace>Operatoroverloadingwithglobalfunctions</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>Operator overloading with class methods</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -128,11 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CFraction. Class methods.cpp" />
-    <ClCompile Include="Class methods.cpp" />
+    <ClCompile Include="CFraction. Global functions.cpp" />
+    <ClCompile Include="Global functions.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CFraction. Class methods.h" />
+    <ClInclude Include="CFraction. Global functions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
