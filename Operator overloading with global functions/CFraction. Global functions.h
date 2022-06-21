@@ -1,102 +1,102 @@
-#pragma once
+п»ї#pragma once
 class CFraction
 {
 private:
-	// Данные - члены(поля) :
-	int m_whole;			// Целое.
-	int m_numerator;		// Числитель.
-	int m_denominator;		// Знаменатель.
+	// Р”Р°РЅРЅС‹Рµ - С‡Р»РµРЅС‹(РїРѕР»СЏ) :
+	int m_whole;			// Р¦РµР»РѕРµ.
+	int m_numerator;		// Р§РёСЃР»РёС‚РµР»СЊ.
+	int m_denominator;		// Р—РЅР°РјРµРЅР°С‚РµР»СЊ.
 public:
-	// Методы-аксессоры:
-	// Инспекторы (позволяют получить значения полей).
+	// РњРµС‚РѕРґС‹-Р°РєСЃРµСЃСЃРѕСЂС‹:
+	// РРЅСЃРїРµРєС‚РѕСЂС‹ (РїРѕР·РІРѕР»СЏСЋС‚ РїРѕР»СѓС‡РёС‚СЊ Р·РЅР°С‡РµРЅРёСЏ РїРѕР»РµР№).
 	int getWhole() { return m_whole; }
 	int getNumerator() { return m_numerator; }
 	int getDenominator() { return m_denominator; }
 
-	// Модификаторы (позволяют установить значения полей).
+	// РњРѕРґРёС„РёРєР°С‚РѕСЂС‹ (РїРѕР·РІРѕР»СЏСЋС‚ СѓСЃС‚Р°РЅРѕРІРёС‚СЊ Р·РЅР°С‡РµРЅРёСЏ РїРѕР»РµР№).
 	void setWhole(int whole) { m_whole = whole; }
 	void setNumerator(int numerator) { m_numerator = numerator; }
 	void setDenominator(int denominator) { m_denominator = denominator; }
 
-	// Конструкторы:
-	// Конструктор по умолчанию (задает начальное значение).
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹:
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ (Р·Р°РґР°РµС‚ РЅР°С‡Р°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ).
 	CFraction() :CFraction(0, 0, 0) {};
 
-	// Конструктор с одним параметром стандартного типа является конструктором преобразования из этого типа в объект класса.
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РѕРґРЅРёРј РїР°СЂР°РјРµС‚СЂРѕРј СЃС‚Р°РЅРґР°СЂС‚РЅРѕРіРѕ С‚РёРїР° СЏРІР»СЏРµС‚СЃСЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂРѕРј РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ РёР· СЌС‚РѕРіРѕ С‚РёРїР° РІ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР°.
 	CFraction(int whole) :CFraction(whole, 0, 0) {};
 
-	// Конструктор без целой части.
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµР· С†РµР»РѕР№ С‡Р°СЃС‚Рё.
 	CFraction(int numerator, int denominator) :CFraction(0, numerator, denominator) {};
 
-	// Конструктор с целой частью.
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ С†РµР»РѕР№ С‡Р°СЃС‚СЊСЋ.
 	CFraction(int whole, int numerator, int denominator)
 		:m_whole(whole), m_numerator(numerator), m_denominator(denominator) {};
 
-	// Метод перевода дроби в вещественное число.
+	// РњРµС‚РѕРґ РїРµСЂРµРІРѕРґР° РґСЂРѕР±Рё РІ РІРµС‰РµСЃС‚РІРµРЅРЅРѕРµ С‡РёСЃР»Рѕ.
 	double ConvertingFractionToRealNumber();
 };
 
-// Функция вычисляет наибольший общий делитель целых чисел (сокращенно НОД).
+// Р¤СѓРЅРєС†РёСЏ РІС‹С‡РёСЃР»СЏРµС‚ РЅР°РёР±РѕР»СЊС€РёР№ РѕР±С‰РёР№ РґРµР»РёС‚РµР»СЊ С†РµР»С‹С… С‡РёСЃРµР» (СЃРѕРєСЂР°С‰РµРЅРЅРѕ РќРћР”).
 int GCD(int a, int b);
 
-// Функция вычисляет наименьшее общее кратное (сокращенно НОК).
+// Р¤СѓРЅРєС†РёСЏ РІС‹С‡РёСЃР»СЏРµС‚ РЅР°РёРјРµРЅСЊС€РµРµ РѕР±С‰РµРµ РєСЂР°С‚РЅРѕРµ (СЃРѕРєСЂР°С‰РµРЅРЅРѕ РќРћРљ).
 int LCM(int a, int b);
 
-// Функция сокращения дробей.
+// Р¤СѓРЅРєС†РёСЏ СЃРѕРєСЂР°С‰РµРЅРёСЏ РґСЂРѕР±РµР№.
 CFraction FractReduction(CFraction fraction);
 
-// Функция превращения неправильной дроби в смешанное число.
+// Р¤СѓРЅРєС†РёСЏ РїСЂРµРІСЂР°С‰РµРЅРёСЏ РЅРµРїСЂР°РІРёР»СЊРЅРѕР№ РґСЂРѕР±Рё РІ СЃРјРµС€Р°РЅРЅРѕРµ С‡РёСЃР»Рѕ.
 CFraction ConvIncorFractToMixNum(CFraction fraction);
 
-// Функция превращения смешанного числа в неправильную дробь.
+// Р¤СѓРЅРєС†РёСЏ РїСЂРµРІСЂР°С‰РµРЅРёСЏ СЃРјРµС€Р°РЅРЅРѕРіРѕ С‡РёСЃР»Р° РІ РЅРµРїСЂР°РІРёР»СЊРЅСѓСЋ РґСЂРѕР±СЊ.
 CFraction ConvMixedNumToIncorrFract(CFraction fraction);
 
-// Функция реализующая операцию сложения.
+// Р¤СѓРЅРєС†РёСЏ СЂРµР°Р»РёР·СѓСЋС‰Р°СЏ РѕРїРµСЂР°С†РёСЋ СЃР»РѕР¶РµРЅРёСЏ.
 CFraction AdditionOfFractions(CFraction fraction1, CFraction fraction2);
 
-// Функция для ввода дроби.
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІРІРѕРґР° РґСЂРѕР±Рё.
 void Input(CFraction& fraction);
 
-// Функция для вывода дроби.
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹РІРѕРґР° РґСЂРѕР±Рё.
 void Print(CFraction fraction);
 
-// Функция выполняет вычитание дробей.
+// Р¤СѓРЅРєС†РёСЏ РІС‹РїРѕР»РЅСЏРµС‚ РІС‹С‡РёС‚Р°РЅРёРµ РґСЂРѕР±РµР№.
 CFraction FractionSubtraction(CFraction fraction1, CFraction fraction2);
 
-// Функция реализующая операцию умножения.
+// Р¤СѓРЅРєС†РёСЏ СЂРµР°Р»РёР·СѓСЋС‰Р°СЏ РѕРїРµСЂР°С†РёСЋ СѓРјРЅРѕР¶РµРЅРёСЏ.
 CFraction Multiplication(CFraction fraction1, CFraction fraction2);
 
-// Функция реализующая операцию деления.
+// Р¤СѓРЅРєС†РёСЏ СЂРµР°Р»РёР·СѓСЋС‰Р°СЏ РѕРїРµСЂР°С†РёСЋ РґРµР»РµРЅРёСЏ.
 CFraction Division(CFraction fraction1, CFraction fraction2);
 
-// Перегрузка арифметических операторов с помощью глобальных функций:
-// Перегрузка оператора "+" для "object + object".
+// РџРµСЂРµРіСЂСѓР·РєР° Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРёС… РѕРїРµСЂР°С‚РѕСЂРѕРІ СЃ РїРѕРјРѕС‰СЊСЋ РіР»РѕР±Р°Р»СЊРЅС‹С… С„СѓРЅРєС†РёР№:
+// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° "+" РґР»СЏ "object + object".
 CFraction operator + (const CFraction& fraction1, const CFraction& fraction2);
 
-// Перегрузка оператора "-" для "object - object".
+// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° "-" РґР»СЏ "object - object".
 CFraction operator - (const CFraction& fraction1, const CFraction& fraction2);
 
-// Перегрузка оператора "*" для "object * object".
+// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° "*" РґР»СЏ "object * object".
 CFraction operator * (const CFraction& fraction1, const CFraction& fraction2);
 
-// Перегрузка оператора "/" для "object / object".
+// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° "/" РґР»СЏ "object / object".
 CFraction operator / (const CFraction& fraction1, const CFraction& fraction2);
 
-// Перегрузка операторов отношения с помощью глобальных функций:
-// Перегрузка оператора "==" для "object == object".
+// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂРѕРІ РѕС‚РЅРѕС€РµРЅРёСЏ СЃ РїРѕРјРѕС‰СЊСЋ РіР»РѕР±Р°Р»СЊРЅС‹С… С„СѓРЅРєС†РёР№:
+// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° "==" РґР»СЏ "object == object".
 bool operator == (const CFraction& fraction1, const CFraction& fraction2);
 
-// Перегрузка оператора "!=" для "object != object".
+// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° "!=" РґР»СЏ "object != object".
 bool operator != (const CFraction& fraction1, const CFraction& fraction2);
 
-// Перегрузка оператора ">" для "object > object".
+// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° ">" РґР»СЏ "object > object".
 bool operator > (const CFraction& fraction1, const CFraction& fraction2);
 
-// Перегрузка оператора ">=" для "object >= object".
+// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° ">=" РґР»СЏ "object >= object".
 bool operator >= (const CFraction& fraction1, const CFraction& fraction2);
 
-// Перегрузка оператора "<" для "object < object".
+// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° "<" РґР»СЏ "object < object".
 bool operator < (const CFraction& fraction1, const CFraction& fraction2);
 
-// Перегрузка оператора "<=" для "object <= object".
+// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° "<=" РґР»СЏ "object <= object".
 bool operator <= (const CFraction& fraction1, const CFraction& fraction2);

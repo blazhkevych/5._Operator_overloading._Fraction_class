@@ -1,25 +1,25 @@
-#include "CFraction. Global functions.h"
+п»ї#include "CFraction. Global functions.h"
 #include <iostream>
 using std::cout;
 using std::cin;
 using std::endl;
 
-// Действия с дробями.
+// Р”РµР№СЃС‚РІРёСЏ СЃ РґСЂРѕР±СЏРјРё.
 // http://spacemath.xyz/deistviya_s_drobyami/
 
-// Функция вычисляет наибольший общий делитель целых чисел (сокращенно НОД).
+// Р¤СѓРЅРєС†РёСЏ РІС‹С‡РёСЃР»СЏРµС‚ РЅР°РёР±РѕР»СЊС€РёР№ РѕР±С‰РёР№ РґРµР»РёС‚РµР»СЊ С†РµР»С‹С… С‡РёСЃРµР» (СЃРѕРєСЂР°С‰РµРЅРЅРѕ РќРћР”).
 int GCD(int a, int b)
 {
 	return b == 0 ? a : GCD(b, a % b);
 }
 
-// Функция вычисляет наименьшее общее кратное (сокращенно НОК).
+// Р¤СѓРЅРєС†РёСЏ РІС‹С‡РёСЃР»СЏРµС‚ РЅР°РёРјРµРЅСЊС€РµРµ РѕР±С‰РµРµ РєСЂР°С‚РЅРѕРµ (СЃРѕРєСЂР°С‰РµРЅРЅРѕ РќРћРљ).
 int LCM(int a, int b)
 {
 	return (a * b) / GCD(a, b);
 }
 
-// Функция сокращения дробей.
+// Р¤СѓРЅРєС†РёСЏ СЃРѕРєСЂР°С‰РµРЅРёСЏ РґСЂРѕР±РµР№.
 CFraction FractReduction(CFraction fraction)
 {
 	CFraction result{};
@@ -43,7 +43,7 @@ CFraction FractReduction(CFraction fraction)
 	}
 }
 
-// Функция превращения неправильной дроби в смешанное число.
+// Р¤СѓРЅРєС†РёСЏ РїСЂРµРІСЂР°С‰РµРЅРёСЏ РЅРµРїСЂР°РІРёР»СЊРЅРѕР№ РґСЂРѕР±Рё РІ СЃРјРµС€Р°РЅРЅРѕРµ С‡РёСЃР»Рѕ.
 CFraction ConvIncorFractToMixNum(CFraction fraction)
 {
 	CFraction result{};
@@ -55,7 +55,7 @@ CFraction ConvIncorFractToMixNum(CFraction fraction)
 	return result;
 }
 
-// Функция превращения смешанного числа в неправильную дробь.
+// Р¤СѓРЅРєС†РёСЏ РїСЂРµРІСЂР°С‰РµРЅРёСЏ СЃРјРµС€Р°РЅРЅРѕРіРѕ С‡РёСЃР»Р° РІ РЅРµРїСЂР°РІРёР»СЊРЅСѓСЋ РґСЂРѕР±СЊ.
 CFraction ConvMixedNumToIncorrFract(CFraction fraction)
 {
 	if (fraction.getWhole() == 0)
@@ -70,7 +70,7 @@ CFraction ConvMixedNumToIncorrFract(CFraction fraction)
 	}
 }
 
-// Функция реализующая операцию сложения.
+// Р¤СѓРЅРєС†РёСЏ СЂРµР°Р»РёР·СѓСЋС‰Р°СЏ РѕРїРµСЂР°С†РёСЋ СЃР»РѕР¶РµРЅРёСЏ.
 CFraction AdditionOfFractions(CFraction fraction1, CFraction fraction2)
 {
 	CFraction f1Copy = fraction1;
@@ -82,7 +82,7 @@ CFraction AdditionOfFractions(CFraction fraction1, CFraction fraction2)
 
 	CFraction result{};
 
-	// Сложение дробей с одинаковыми знаменателями.
+	// РЎР»РѕР¶РµРЅРёРµ РґСЂРѕР±РµР№ СЃ РѕРґРёРЅР°РєРѕРІС‹РјРё Р·РЅР°РјРµРЅР°С‚РµР»СЏРјРё.
 	if (f1Copy.getDenominator() == f2Copy.getDenominator())
 	{
 		result.setWhole(f1Copy.getWhole() + f2Copy.getWhole());
@@ -90,7 +90,7 @@ CFraction AdditionOfFractions(CFraction fraction1, CFraction fraction2)
 		result.setDenominator(f1Copy.getDenominator());
 	}
 
-	// Сложение дробей с разными знаменателями.
+	// РЎР»РѕР¶РµРЅРёРµ РґСЂРѕР±РµР№ СЃ СЂР°Р·РЅС‹РјРё Р·РЅР°РјРµРЅР°С‚РµР»СЏРјРё.
 	else if (f1Copy.getDenominator() != f2Copy.getDenominator())
 	{
 		int nok = LCM(f1Copy.getDenominator(), f2Copy.getDenominator());
@@ -106,7 +106,7 @@ CFraction AdditionOfFractions(CFraction fraction1, CFraction fraction2)
 	return result;
 }
 
-// Функция для ввода дроби.
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІРІРѕРґР° РґСЂРѕР±Рё.
 void Input(CFraction& fraction)
 {
 	cout << "whole: ";
@@ -123,7 +123,7 @@ void Input(CFraction& fraction)
 	fraction.setDenominator(d);
 }
 
-// Функция для вывода дроби.
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹РІРѕРґР° РґСЂРѕР±Рё.
 void Print(CFraction fraction)
 {
 	//cout << "\nResult:\n";
@@ -133,7 +133,7 @@ void Print(CFraction fraction)
 		cout << fraction.getNumerator() << '/' << fraction.getDenominator() << endl;
 }
 
-// Функция выполняет вычитание дробей.
+// Р¤СѓРЅРєС†РёСЏ РІС‹РїРѕР»РЅСЏРµС‚ РІС‹С‡РёС‚Р°РЅРёРµ РґСЂРѕР±РµР№.
 CFraction FractionSubtraction(CFraction fraction1, CFraction fraction2)
 {
 	CFraction f1Copy = fraction1;
@@ -145,14 +145,14 @@ CFraction FractionSubtraction(CFraction fraction1, CFraction fraction2)
 
 	CFraction result{};
 
-	// Вычитание дробей с одинаковыми знаменателями.
+	// Р’С‹С‡РёС‚Р°РЅРёРµ РґСЂРѕР±РµР№ СЃ РѕРґРёРЅР°РєРѕРІС‹РјРё Р·РЅР°РјРµРЅР°С‚РµР»СЏРјРё.
 	if (f1Copy.getDenominator() == f2Copy.getDenominator() && f1Copy.getWhole() == 0 && f2Copy.getWhole() == 0)
 	{
 		result.setNumerator(f1Copy.getNumerator() - f2Copy.getNumerator());
 		result.setDenominator(f1Copy.getDenominator());
 	}
 
-	// Вычитание обычных дробей.
+	// Р’С‹С‡РёС‚Р°РЅРёРµ РѕР±С‹С‡РЅС‹С… РґСЂРѕР±РµР№.
 	else if (f1Copy.getDenominator() != f2Copy.getDenominator() && f1Copy.getWhole() == 0 && f2Copy.getWhole() == 0)
 	{
 		int nok = LCM(f1Copy.getDenominator(), f2Copy.getDenominator());
@@ -168,7 +168,7 @@ CFraction FractionSubtraction(CFraction fraction1, CFraction fraction2)
 	return result;
 }
 
-// Функция реализующая операцию умножения.
+// Р¤СѓРЅРєС†РёСЏ СЂРµР°Р»РёР·СѓСЋС‰Р°СЏ РѕРїРµСЂР°С†РёСЋ СѓРјРЅРѕР¶РµРЅРёСЏ.
 CFraction Multiplication(CFraction fraction1, CFraction fraction2)
 {
 	CFraction f1Copy = fraction1;
@@ -190,7 +190,7 @@ CFraction Multiplication(CFraction fraction1, CFraction fraction2)
 	return result;
 }
 
-// Функция реализующая операцию деления.
+// Р¤СѓРЅРєС†РёСЏ СЂРµР°Р»РёР·СѓСЋС‰Р°СЏ РѕРїРµСЂР°С†РёСЋ РґРµР»РµРЅРёСЏ.
 CFraction Division(CFraction fraction1, CFraction fraction2)
 {
 	CFraction f1Copy = fraction1;
@@ -215,33 +215,33 @@ CFraction Division(CFraction fraction1, CFraction fraction2)
 	return result;
 }
 
-// Перегрузка арифметических операторов с помощью глобальных функций:
-// Перегрузка оператора "+" для "object + object".
+// РџРµСЂРµРіСЂСѓР·РєР° Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРёС… РѕРїРµСЂР°С‚РѕСЂРѕРІ СЃ РїРѕРјРѕС‰СЊСЋ РіР»РѕР±Р°Р»СЊРЅС‹С… С„СѓРЅРєС†РёР№:
+// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° "+" РґР»СЏ "object + object".
 CFraction operator + (const CFraction& fraction1, const CFraction& fraction2)
 {
 	return AdditionOfFractions(fraction1, fraction2);
 }
 
-// Перегрузка оператора "-" для "object - object".
+// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° "-" РґР»СЏ "object - object".
 CFraction operator - (const CFraction& fraction1, const CFraction& fraction2)
 {
 	return FractionSubtraction(fraction1, fraction2);
 }
 
-// Перегрузка оператора "*" для "object * object".
+// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° "*" РґР»СЏ "object * object".
 CFraction operator * (const CFraction& fraction1, const CFraction& fraction2)
 {
 	return Multiplication(fraction1, fraction2);
 }
 
-// Перегрузка оператора "/" для "object / object".
+// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° "/" РґР»СЏ "object / object".
 CFraction operator / (const CFraction& fraction1, const CFraction& fraction2)
 {
 	return Division(fraction1, fraction2);
 }
 
-// Перегрузка операторов отношения с помощью глобальных функций:
-// Перегрузка оператора "==" для "object == object".
+// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂРѕРІ РѕС‚РЅРѕС€РµРЅРёСЏ СЃ РїРѕРјРѕС‰СЊСЋ РіР»РѕР±Р°Р»СЊРЅС‹С… С„СѓРЅРєС†РёР№:
+// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° "==" РґР»СЏ "object == object".
 bool operator == (const CFraction& fraction1, const CFraction& fraction2)
 {
 	CFraction f1Copy = fraction1;
@@ -258,13 +258,13 @@ bool operator == (const CFraction& fraction1, const CFraction& fraction2)
 		return false;
 }
 
-// Перегрузка оператора "!=" для "object != object".
+// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° "!=" РґР»СЏ "object != object".
 bool operator != (const CFraction& fraction1, const CFraction& fraction2)
 {
 	return !(operator==(fraction1, fraction2));
 }
 
-// Перегрузка оператора ">" для "object > object".
+// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° ">" РґР»СЏ "object > object".
 bool operator > (const CFraction& fraction1, const CFraction& fraction2)
 {
 	CFraction fraction1Copy = fraction1;
@@ -274,7 +274,7 @@ bool operator > (const CFraction& fraction1, const CFraction& fraction2)
 	if (fraction2Copy.getWhole() > 0)
 		fraction2Copy = ConvMixedNumToIncorrFract(fraction2Copy);
 
-	// Сравнение дробей с одинаковыми знаменателями.
+	// РЎСЂР°РІРЅРµРЅРёРµ РґСЂРѕР±РµР№ СЃ РѕРґРёРЅР°РєРѕРІС‹РјРё Р·РЅР°РјРµРЅР°С‚РµР»СЏРјРё.
 	if (fraction1Copy.getDenominator() == fraction2Copy.getDenominator())
 	{
 		if (fraction1Copy.getNumerator() > fraction2Copy.getNumerator())
@@ -282,7 +282,7 @@ bool operator > (const CFraction& fraction1, const CFraction& fraction2)
 		else
 			return false;
 	}
-	// Сравнение дробей с одинаковыми числителями.
+	// РЎСЂР°РІРЅРµРЅРёРµ РґСЂРѕР±РµР№ СЃ РѕРґРёРЅР°РєРѕРІС‹РјРё С‡РёСЃР»РёС‚РµР»СЏРјРё.
 	else if (fraction1Copy.getNumerator() == fraction2Copy.getNumerator())
 	{
 		if (fraction1Copy.getDenominator() < fraction2Copy.getDenominator())
@@ -290,20 +290,20 @@ bool operator > (const CFraction& fraction1, const CFraction& fraction2)
 		else
 			return false;
 	}
-	// Сравнение дробей с разными числителями и разными знаменателями.
+	// РЎСЂР°РІРЅРµРЅРёРµ РґСЂРѕР±РµР№ СЃ СЂР°Р·РЅС‹РјРё С‡РёСЃР»РёС‚РµР»СЏРјРё Рё СЂР°Р·РЅС‹РјРё Р·РЅР°РјРµРЅР°С‚РµР»СЏРјРё.
 	else if (fraction1Copy.getNumerator() != fraction2Copy.getNumerator() &&
 		fraction1Copy.getDenominator() != fraction2Copy.getDenominator())
 	{
-		// Приведение дроби к одинаковому (общему) знаменателю.
-		int nok = LCM(fraction1Copy.getDenominator(), fraction2Copy.getDenominator()); // НОК.
-		int additionalMultiplierFraction1 = (nok / fraction1Copy.getDenominator()); // Дополнительный множитель.
-		int additionalMultiplierFraction2 = (nok / fraction2Copy.getDenominator()); // Дополнительный множитель.
+		// РџСЂРёРІРµРґРµРЅРёРµ РґСЂРѕР±Рё Рє РѕРґРёРЅР°РєРѕРІРѕРјСѓ (РѕР±С‰РµРјСѓ) Р·РЅР°РјРµРЅР°С‚РµР»СЋ.
+		int nok = LCM(fraction1Copy.getDenominator(), fraction2Copy.getDenominator()); // РќРћРљ.
+		int additionalMultiplierFraction1 = (nok / fraction1Copy.getDenominator()); // Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Р№ РјРЅРѕР¶РёС‚РµР»СЊ.
+		int additionalMultiplierFraction2 = (nok / fraction2Copy.getDenominator()); // Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Р№ РјРЅРѕР¶РёС‚РµР»СЊ.
 		fraction1Copy.setNumerator(fraction1Copy.getNumerator() * additionalMultiplierFraction1);
 		fraction1Copy.setDenominator(fraction1Copy.getDenominator() * additionalMultiplierFraction1);
 		fraction2Copy.setNumerator(fraction2Copy.getNumerator() * additionalMultiplierFraction2);
 		fraction2Copy.setDenominator(fraction2Copy.getDenominator() * additionalMultiplierFraction2);
 
-		// Сравнение дробей с одинаковыми знаменателями.
+		// РЎСЂР°РІРЅРµРЅРёРµ РґСЂРѕР±РµР№ СЃ РѕРґРёРЅР°РєРѕРІС‹РјРё Р·РЅР°РјРµРЅР°С‚РµР»СЏРјРё.
 		if (fraction1Copy.getNumerator() > fraction2Copy.getNumerator())
 			return true;
 		else
@@ -311,13 +311,13 @@ bool operator > (const CFraction& fraction1, const CFraction& fraction2)
 	}
 }
 
-// Перегрузка оператора ">=" для "object >= object".
+// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° ">=" РґР»СЏ "object >= object".
 bool operator >= (const CFraction& fraction1, const CFraction& fraction2)
 {
 	return !(operator<(fraction1, fraction2));
 }
 
-// Перегрузка оператора "<" для "object < object".
+// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° "<" РґР»СЏ "object < object".
 bool operator < (const CFraction& fraction1, const CFraction& fraction2)
 {
 	CFraction fraction1Copy = fraction1;
@@ -327,7 +327,7 @@ bool operator < (const CFraction& fraction1, const CFraction& fraction2)
 	if (fraction2Copy.getWhole() > 0)
 		fraction2Copy = ConvMixedNumToIncorrFract(fraction2Copy);
 
-	// Сравнение дробей с одинаковыми знаменателями.
+	// РЎСЂР°РІРЅРµРЅРёРµ РґСЂРѕР±РµР№ СЃ РѕРґРёРЅР°РєРѕРІС‹РјРё Р·РЅР°РјРµРЅР°С‚РµР»СЏРјРё.
 	if (fraction1Copy.getDenominator() == fraction2Copy.getDenominator())
 	{
 		if (fraction1Copy.getNumerator() < fraction2Copy.getNumerator())
@@ -335,7 +335,7 @@ bool operator < (const CFraction& fraction1, const CFraction& fraction2)
 		else
 			return false;
 	}
-	// Сравнение дробей с одинаковыми числителями.
+	// РЎСЂР°РІРЅРµРЅРёРµ РґСЂРѕР±РµР№ СЃ РѕРґРёРЅР°РєРѕРІС‹РјРё С‡РёСЃР»РёС‚РµР»СЏРјРё.
 	else if (fraction1Copy.getNumerator() == fraction2Copy.getNumerator())
 	{
 		if (fraction1Copy.getDenominator() > fraction2Copy.getDenominator())
@@ -343,20 +343,20 @@ bool operator < (const CFraction& fraction1, const CFraction& fraction2)
 		else
 			return false;
 	}
-	// Сравнение дробей с разными числителями и разными знаменателями.
+	// РЎСЂР°РІРЅРµРЅРёРµ РґСЂРѕР±РµР№ СЃ СЂР°Р·РЅС‹РјРё С‡РёСЃР»РёС‚РµР»СЏРјРё Рё СЂР°Р·РЅС‹РјРё Р·РЅР°РјРµРЅР°С‚РµР»СЏРјРё.
 	else if (fraction1Copy.getNumerator() != fraction2Copy.getNumerator() &&
 		fraction1Copy.getDenominator() != fraction2Copy.getDenominator())
 	{
-		// Приведение дроби к одинаковому (общему) знаменателю.
-		int nok = LCM(fraction1Copy.getDenominator(), fraction2Copy.getDenominator()); // НОК.
-		int additionalMultiplierFraction1 = (nok / fraction1Copy.getDenominator()); // Дополнительный множитель.
-		int additionalMultiplierFraction2 = (nok / fraction2Copy.getDenominator()); // Дополнительный множитель.
+		// РџСЂРёРІРµРґРµРЅРёРµ РґСЂРѕР±Рё Рє РѕРґРёРЅР°РєРѕРІРѕРјСѓ (РѕР±С‰РµРјСѓ) Р·РЅР°РјРµРЅР°С‚РµР»СЋ.
+		int nok = LCM(fraction1Copy.getDenominator(), fraction2Copy.getDenominator()); // РќРћРљ.
+		int additionalMultiplierFraction1 = (nok / fraction1Copy.getDenominator()); // Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Р№ РјРЅРѕР¶РёС‚РµР»СЊ.
+		int additionalMultiplierFraction2 = (nok / fraction2Copy.getDenominator()); // Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Р№ РјРЅРѕР¶РёС‚РµР»СЊ.
 		fraction1Copy.setNumerator(fraction1Copy.getNumerator() * additionalMultiplierFraction1);
 		fraction1Copy.setDenominator(fraction1Copy.getDenominator() * additionalMultiplierFraction1);
 		fraction2Copy.setNumerator(fraction2Copy.getNumerator() * additionalMultiplierFraction2);
 		fraction2Copy.setDenominator(fraction2Copy.getDenominator() * additionalMultiplierFraction2);
 
-		// Сравнение дробей с одинаковыми знаменателями.
+		// РЎСЂР°РІРЅРµРЅРёРµ РґСЂРѕР±РµР№ СЃ РѕРґРёРЅР°РєРѕРІС‹РјРё Р·РЅР°РјРµРЅР°С‚РµР»СЏРјРё.
 		if (fraction1Copy.getNumerator() < fraction2Copy.getNumerator())
 			return true;
 		else
@@ -364,13 +364,13 @@ bool operator < (const CFraction& fraction1, const CFraction& fraction2)
 	}
 }
 
-// Перегрузка оператора "<=" для "object <= object".
+// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° "<=" РґР»СЏ "object <= object".
 bool operator <= (const CFraction& fraction1, const CFraction& fraction2)
 {
 	return !(operator>(fraction1, fraction2));
 }
 
-// Метод перевода дроби в вещественное число.
+// РњРµС‚РѕРґ РїРµСЂРµРІРѕРґР° РґСЂРѕР±Рё РІ РІРµС‰РµСЃС‚РІРµРЅРЅРѕРµ С‡РёСЃР»Рѕ.
 double CFraction::ConvertingFractionToRealNumber()
 {
 	CFraction fractionCopy = *this;

@@ -1,29 +1,29 @@
-/*
-#################### ЗАДАНИЕ ###################
-	Для разработанного ранее класса CFraction
-перегрузить арифметические операции :
-	* сложения;
-	* вычитания;
-	* умножения;
-	* деления;
-	* операции отношения.
-	Предусмотреть два способа перегрузки:
-	• методами класса;
-	• глобальными функциями.
+п»ї/*
+#################### Р—РђР”РђРќРР• ###################
+	Р”Р»СЏ СЂР°Р·СЂР°Р±РѕС‚Р°РЅРЅРѕРіРѕ СЂР°РЅРµРµ РєР»Р°СЃСЃР° CFraction
+РїРµСЂРµРіСЂСѓР·РёС‚СЊ Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРёРµ РѕРїРµСЂР°С†РёРё :
+	* СЃР»РѕР¶РµРЅРёСЏ;
+	* РІС‹С‡РёС‚Р°РЅРёСЏ;
+	* СѓРјРЅРѕР¶РµРЅРёСЏ;
+	* РґРµР»РµРЅРёСЏ;
+	* РѕРїРµСЂР°С†РёРё РѕС‚РЅРѕС€РµРЅРёСЏ.
+	РџСЂРµРґСѓСЃРјРѕС‚СЂРµС‚СЊ РґРІР° СЃРїРѕСЃРѕР±Р° РїРµСЂРµРіСЂСѓР·РєРё:
+	вЂў РјРµС‚РѕРґР°РјРё РєР»Р°СЃСЃР°;
+	вЂў РіР»РѕР±Р°Р»СЊРЅС‹РјРё С„СѓРЅРєС†РёСЏРјРё.
 ################################################
 
-		СТАТУС : Готово.
+		РЎРўРђРўРЈРЎ : Р“РѕС‚РѕРІРѕ.
 
-		ВОЗМОЖНЫЕ ДОРАБОТКИ:
+		Р’РћР—РњРћР–РќР«Р• Р”РћР РђР‘РћРўРљР:
 *
 
-		ИЗВЕСТНЫЕ ОШИБКИ:
+		РР—Р’Р•РЎРўРќР«Р• РћРЁРР‘РљР:
 *
 
-		ПРОТЕСТИРОВАТЬ:
+		РџР РћРўР•РЎРўРР РћР’РђРўР¬:
 *
 
-		ВИДЕО: 03:07:55(начало дз)
+		Р’РР”Р•Рћ: 03:07:55(РЅР°С‡Р°Р»Рѕ РґР·)
 ################################################
 */
 
@@ -43,41 +43,41 @@ int main()
 	cout << "fraction2 = "; Print(fraction2);
 	cout << endl;
 
-	CFraction fraction3 = 10; //  Преобразование из этого типа в объект класса.
+	CFraction fraction3 = 10; //  РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РёР· СЌС‚РѕРіРѕ С‚РёРїР° РІ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР°.
 	cout << "CFraction fraction3 = 10;" << endl;
 	cout << "fraction3 = ";  Print(fraction3);
 	cout << endl << endl;
 
-	// Перегрузка арифметических операторов с помощью методов класса:
-	// Перегрузка оператора "+" для "object + object".
+	// РџРµСЂРµРіСЂСѓР·РєР° Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРёС… РѕРїРµСЂР°С‚РѕСЂРѕРІ СЃ РїРѕРјРѕС‰СЊСЋ РјРµС‚РѕРґРѕРІ РєР»Р°СЃСЃР°:
+	// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° "+" РґР»СЏ "object + object".
 	CFraction fraction4 = operator+(fraction1, fraction2); // 1,1,2 + 1,1,8 = 2,5,8
 	cout << "CFraction fraction4 = operator+(fraction1, fraction2);" << endl;
 	cout << "fraction4 = "; Print(fraction4);
 	cout << endl;
 
-	// Перегрузка оператора "-" для "object - object".
+	// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° "-" РґР»СЏ "object - object".
 	CFraction fraction5 = fraction1 - fraction2; // 1,1,2 - 1,1,8 = 0,3,8
 	cout << "CFraction fraction5 = fraction1 - fraction2;" << endl;
 	cout << "fraction5 = "; Print(fraction5);
 	cout << endl;
 
-	// Перегрузка оператора "*" для "object * object".
+	// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° "*" РґР»СЏ "object * object".
 	CFraction fraction6 = fraction1 * fraction2; // 1,1,2 * 1,1,8 = 1,11,16
 	cout << "CFraction fraction6 = fraction1 * fraction2;" << endl;
 	cout << "fraction6 = "; Print(fraction6);
 	cout << endl;
 
-	// Перегрузка оператора "/" для "object / object".
+	// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° "/" РґР»СЏ "object / object".
 	CFraction fraction7 = fraction1 / fraction2; // 1,1,2 / 1,1,8 = 1,1,3
 	cout << "CFraction fraction7 = fraction1 / fraction2;" << endl;
 	cout << "fraction7 = "; Print(fraction7);
 	cout << endl;
 
-	// Перегрузка операторов отношения с помощью методов класса:	
-	// Перегрузка оператора ">" для "object > object".
+	// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂРѕРІ РѕС‚РЅРѕС€РµРЅРёСЏ СЃ РїРѕРјРѕС‰СЊСЋ РјРµС‚РѕРґРѕРІ РєР»Р°СЃСЃР°:	
+	// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° ">" РґР»СЏ "object > object".
 	CFraction fraction8{ 1,3,4 };
 	CFraction fraction9{ 1,2,4 };
-	bool res = fraction8 > fraction9; // Сравнение дробей с одинаковыми знаменателями.
+	bool res = fraction8 > fraction9; // РЎСЂР°РІРЅРµРЅРёРµ РґСЂРѕР±РµР№ СЃ РѕРґРёРЅР°РєРѕРІС‹РјРё Р·РЅР°РјРµРЅР°С‚РµР»СЏРјРё.
 	cout << "CFraction fraction8{ 1,3,4 };" << endl
 		<< "CFraction fraction9{ 1,2,4 };" << endl
 		<< "bool res = fraction8 > fraction9;" << endl
@@ -86,7 +86,7 @@ int main()
 
 	CFraction fraction10{ 0,2,3 };
 	CFraction fraction11{ 0,2,4 };
-	bool res2 = fraction10 > fraction11; // Сравнение дробей с одинаковыми числителями.
+	bool res2 = fraction10 > fraction11; // РЎСЂР°РІРЅРµРЅРёРµ РґСЂРѕР±РµР№ СЃ РѕРґРёРЅР°РєРѕРІС‹РјРё С‡РёСЃР»РёС‚РµР»СЏРјРё.
 	cout << "CFraction fraction10{ 0,2,3 };" << endl
 		<< "CFraction fraction11{ 0,2,4 };" << endl
 		<< "bool res2 = fraction10 > fraction11;" << endl
@@ -94,13 +94,13 @@ int main()
 
 	CFraction fraction12{ 0,5,2 };
 	CFraction fraction13{ 0,2,3 };
-	bool res3 = fraction12 > fraction13; // Сравнение дробей с разными числителями и разными знаменателями.
+	bool res3 = fraction12 > fraction13; // РЎСЂР°РІРЅРµРЅРёРµ РґСЂРѕР±РµР№ СЃ СЂР°Р·РЅС‹РјРё С‡РёСЃР»РёС‚РµР»СЏРјРё Рё СЂР°Р·РЅС‹РјРё Р·РЅР°РјРµРЅР°С‚РµР»СЏРјРё.
 	cout << "CFraction fraction12{ 0,5,2 };" << endl
 		<< "CFraction fraction13{ 0,2,3 };" << endl
 		<< "bool res3 = fraction12 > fraction13;" << endl
 		<< "res3 = " << boolalpha << res3 << endl << endl;
 
-	// Перегрузка оператора "<" для "object < object".
+	// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° "<" РґР»СЏ "object < object".
 	CFraction fraction122{ 0,5,2 };
 	CFraction fraction133{ 2,2,3 };
 	bool res4 = fraction122 < fraction133;
@@ -109,7 +109,7 @@ int main()
 		<< "bool res4 = fraction122 < fraction133;" << endl
 		<< "res4 = " << res4 << endl << endl;
 
-	// Перегрузка оператора "==" для "object == object".
+	// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° "==" РґР»СЏ "object == object".
 	CFraction fraction14{ 5,3,4 };
 	CFraction fraction15{ 5,3,4 };
 	bool res5 = fraction14 == fraction15; 
@@ -118,7 +118,7 @@ int main()
 		<< "bool res5 = fraction14 == fraction15;" << endl
 		<< "res5 = " << boolalpha << res5 << endl << endl;
 
-	// Перегрузка оператора "!=" для "object != object".
+	// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° "!=" РґР»СЏ "object != object".
 	CFraction fraction16{ 5,3,4 };
 	CFraction fraction17{ 6,4,3 };
 	bool res6 = fraction16 != fraction17; 
@@ -127,7 +127,7 @@ int main()
 		<< "bool res6 = fraction16 != fraction17;" << endl
 		<< "res6 = " << boolalpha << res6 << endl << endl;
 
-	// Перегрузка оператора "<=" для "object <= object"
+	// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° "<=" РґР»СЏ "object <= object"
 	CFraction fraction18{ 6,4,3 };
 	CFraction fraction19{ 7,4,3 };
 	bool res7 = fraction18 <= fraction19; 
@@ -136,7 +136,7 @@ int main()
 		<< "bool res7 = fraction18 <= fraction19;" << endl
 		<< "res7 = " << boolalpha << res7 << endl << endl;
 
-	// Перегрузка оператора ">=" для "object >= object"
+	// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° ">=" РґР»СЏ "object >= object"
 	CFraction fraction20{ 8,4,3 };
 	CFraction fraction21{ 7,4,3 };
 	bool res8 = fraction20 >= fraction21;
@@ -145,7 +145,7 @@ int main()
 		<< "bool res8 = fraction20 >= fraction21;" << endl
 		<< "res8 = " << boolalpha << res8 << endl << endl;
 
-	char action; // Действие с дробями.
+	char action; // Р”РµР№СЃС‚РІРёРµ СЃ РґСЂРѕР±СЏРјРё.
 	char answer{ 0 }; // Do you want to continue?.
 
 	do
